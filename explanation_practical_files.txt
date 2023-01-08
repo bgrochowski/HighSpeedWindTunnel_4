@@ -1,0 +1,8 @@
+Please find here the following files:
+
+Matlab function for the computation of the isentropic and normal shock wave relations ('flowisentropic2.m' and 'flownormalshock2.m'), these are similar to the ones that are available in the Matlab Aerospace Toolbox.
+Python function for the computation of the isentropic and normal shock wave relations ('flowtools.py')
+Example how to use the Python function ('flowtools_run.py')
+Example measurement data ('testfile.txt')
+Example plots of the measurement data & theoretical values computed using the values from table 1 of the manual ('Measured_pressure_ratio.jpg', 'Comparison_with_theory.jpg')
+Before attending the practical read the manual and make sure you are capable of loading the first two columns of 'testfile.txt' either in Matlab or Python and are able to reproduce both plots.

@@ -41,7 +41,7 @@ for i in range(len(xtab)):
     else:
         regime = 'sup'
     values = flowtools.flowisentropic2(gamma, Aratio_tab[i], regime)
-    p__pt_theoretical_tab.append(float(values[1]))
+    p__pt_theoretical_tab.append(float(values[2]))
 
 plt.plot(xtab, p__pt_measured_tab[:25], 'bo-', label="Measured")
 plt.plot(xtab, p__pt_theoretical_tab, 'ro-', label="Theoretical")

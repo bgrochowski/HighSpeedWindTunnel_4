@@ -1,5 +1,5 @@
 import flowtools
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 GAMMA=1.4
 
 #Process Fixed Geom File
@@ -34,7 +34,7 @@ for line in geom1file_lines:
 #------------------------------------------------------------------#    
 #Input (Constants)
 x0=44.8                 #[mm]
-p_pt_x0_measured=0.78    #[-]
+p_pt_x0_measured=0.83167270    #[-]
 
 #Compute Local Mach from p_pt_x0_measured
 A_x0_A_t=Aratio_tab[xtab.index(x0)]

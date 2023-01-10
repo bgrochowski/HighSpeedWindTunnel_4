@@ -1,5 +1,6 @@
 import flowtools
 import matplotlib.pyplot as plt
+import seaborn
 
 gamma = 1.4
 
@@ -118,21 +119,36 @@ for i in range(len(throat2xtab)):
     p__pt_shock2theoretical_tab.append(float(values[2]))
 
 
-plt.plot(xtab, p__pt_measured3_tab, 'bo-', label="Measurement 3A")
-plt.plot(xtab, p__pt_measured4_tab, 'ro-', label="Measurement 4A")
-plt.plot(xtab, p__pt_measured5_tab, 'yo-', label="Measurement 5A")
-plt.plot([shock1_pos, shock1_pos], [0, 1], 'g--', label='Shock position in measurement 3A')
-plt.plot([shock2_pos, shock2_pos], [0, 1], 'g--', label='Shock position in measurement 4A')
-plt.plot([shock1_pos], [pe6__pt_shock1], 'o', label='Computed minimum pressure ratio for supersonic flow in measurement 3A')
-plt.plot([shock2_pos], [pe6__pt_shock2], 'o', label='Computed minimum pressure ratio for supersonic flow in measurement 4A')
-plt.plot([shock1_pos], [pe5__pt_shock1], 'o', label='Computed pressure ratio after shock in measurement 4A')
-plt.plot([shock2_pos], [pe5__pt_shock2], 'o', label='Computed pressure ratio after shock in measurement 5A')
-plt.plot([shock1_pos], [pe3__pt_shock1], 'o', label='Computed maximum pressure ratio for subsonic flow in measurement 3A')
-plt.plot([shock2_pos], [pe3__pt_shock2], 'o', label='Computed maximum pressure ratio for subsonic flow in measurement 4A')
+fig, ax = plt.subplots(figsize=(60, 40))
+
+plt.vlines(44.8, 0, 1, linestyle='--', color='k', linewidth=0.7)
+plt.vlines(760, 0, 1, linestyle='--', color='k', linewidth=0.7)
+plt.plot([shock1_pos, shock1_pos], [0, 1], 'b--', label='Shock position (3A)')
+plt.plot([shock2_pos, shock2_pos], [0, 1], 'r--', label='Shock position (4A)')
+plt.plot([390, 390], [0, 1], '--', color='rosybrown', label='2nd throat position')
+
+plt.plot(xtab, p__pt_measured3_tab, 'b+-', label="Measurement 3A")
+plt.plot(xtab, p__pt_measured4_tab, 'r+-', label="Measurement 4A")
+plt.plot(xtab, p__pt_measured5_tab, 'y+-', label="Measurement 5A")
+
+plt.plot([shock1_pos], [pe6__pt_shock1], 'o', label='Computed minimum pressure ratio for supersonic flow (3A)')
+plt.plot([shock2_pos], [pe6__pt_shock2], 'o', label='Computed minimum pressure ratio for supersonic flow (4A)')
+plt.plot([shock1_pos], [pe5__pt_shock1], 'o', label='Computed pressure ratio after shock(4A)')
+plt.plot([shock2_pos], [pe5__pt_shock2], 'o', label='Computed pressure ratio after shock(5A)')
+plt.plot([shock1_pos], [pe3__pt_shock1], 'o', label='Computed maximum pressure ratio for subsonic flow (3A)')
+plt.plot([shock2_pos], [pe3__pt_shock2], 'o', label='Computed maximum pressure ratio for subsonic flow (4A)')
 # plt.plot(throat2xtab, pe3__pt_theoretical_tab, 'y', label="Theoretical flow with pe3 at exit")
 # plt.plot(throat2xtab, p__pt_shock1theoretical_tab, 'b', label="Theoretical flow with shock at x=630mm")
 # plt.plot(throat2xtab, p__pt_shock2theoretical_tab, 'r', label="Theoretical flow with shock at x=530mm")
 # plt.xlim(40, 200)
+##ax.set_aspect('equal')
+ax.grid(True, linestyle='--', which='both')
+
+seaborn.despine(ax=ax, offset=0) 
+plt.xlim(0, 900)
+plt.ylim(0, 1)
+plt.xlabel(r'$x[mm]$')
+plt.ylabel(r'$\frac{p}{p_t}[-]$')
 plt.legend()
 plt.show()
 

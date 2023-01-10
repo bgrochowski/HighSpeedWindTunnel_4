@@ -63,29 +63,34 @@ for i in range(len(xtab)):
     M_theoretical_tab.append(float(values[0]))
     p__pt_theoretical_tab.append(float(values[2]))
 
-# plt.plot(xtab, M_measurement1_tab[:25], 'bo-', label="Measured, measurement 1AB")
-# plt.plot(xtab, M_theoretical_tab, 'r-', label="Theoretical measurement 1AB")
-# plt.plot(xtab, M_measurement2_tab[:25], 'go-', label="Measured measurement 2A")
-# plt.plot(xtab, M_local, 'y-', label="Theoretical measurement 2A")
+# ax.plot(xtab, M_measurement1_tab[:25], 'bo-', label="Measured, measurement 1AB")
+# ax.plot(xtab, M_theoretical_tab, 'r-', label="Theoretical measurement 1AB")
+# ax.plot(xtab, M_measurement2_tab[:25], 'go-', label="Measured measurement 2A")
+# ax.plot(xtab, M_local, 'y-', label="Theoretical measurement 2A")
 
-fig, ax = plt.subplots(figsize=(60, 40))
+fig, ax = plt.subplots(figsize=(8, 4))
 
-plt.vlines(44.8, 0, 1, linestyle='--', color='k', linewidth=0.7)
-plt.vlines(194.8, 0, 1, linestyle='--', color='k', linewidth=0.7)
+plt.vlines(44.8, 0, 2.5, linestyle='--', color='k', linewidth=0.7)
+plt.vlines(194.8, 0, 2.5, linestyle='--', color='k', linewidth=0.7)
 
-ax.plot(xtab, p__pt_measurement1_tab[:25], 'ro-', label="Measured Data 1AB")
-ax.plot(xtab, p__pt_theoretical_tab, '-', color='rosybrown', label="Theoretical Prediction 1AB")
-ax.plot(xtab, p__pt_measurement2_tab[:25], 'go-', label="Measured Data 2A")
-ax.plot(xtab, p_pt, 'y-', label="Theoretical Prediction 2A")
+ax.plot(xtab, M_measurement1_tab[:25], 'ro-', label="Measured Data 1AB")
+ax.plot(xtab, M_theoretical_tab, '-', color='rosybrown', label="Theoretical Prediction 1AB")
+ax.plot(xtab, M_measurement2_tab[:25], 'go-', label="Measured Data 2A")
+ax.plot(xtab, M_local, 'y-', label="Theoretical Prediction 2A")
+
+#ax.plot(xtab, p__pt_measurement1_tab[:25], 'ro-', label="Measured Data 1AB")
+#ax.plot(xtab, p__pt_theoretical_tab, '-', color='rosybrown', label="Theoretical Prediction 1AB")
+#ax.plot(xtab, p__pt_measurement2_tab[:25], 'go-', label="Measured Data 2A")
+#ax.plot(xtab, p_pt, 'y-', label="Theoretical Prediction 2A")
 
 ##ax.set_aspect('equal')
 ax.grid(True, linestyle='--', which='both')
 
 seaborn.despine(ax=ax, offset=0) 
 
-plt.xlabel(r'$x$')
-plt.ylabel(r'$\frac{p}{p_t}$')
+plt.xlabel(r'$x[mm]$')
+plt.ylabel(r'$M[-]$')
 plt.xlim(40, 200)
-plt.ylim(0, 1)
+plt.ylim(0, 2.5)
 plt.legend()
 plt.show()

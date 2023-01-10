@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 gamma = 1.4
 
-testfile = open('testfile.txt', 'r')
+testfile = open('data_for_report/Data_Test_1AB.txt', 'r')
 testfile_lines = testfile.readlines()
 testfile.close()
 
@@ -38,8 +38,6 @@ for line in geom1file_lines:
         h_tab.append(float(line[1]))
         Aratio_tab.append(float(line[2]))
 
-
-
 p__pt_theoretical_tab = []
 M_theoretical_tab = []
 
@@ -53,13 +51,7 @@ for i in range(len(xtab)):
     p__pt_theoretical_tab.append(float(values[2]))
 
 plt.plot(xtab, M_measured_tab[:25], 'bo-', label="Measured")
-plt.plot(xtab, M_theoretical_tab, 'ro-', label="Theoretical")
+plt.plot(xtab, M_theoretical_tab, 'r-', label="Theoretical")
 plt.xlim(40, 200)
 plt.legend()
 plt.show()
-
-# out = flowtools.flowisentropic2(gamma,50.0,'sub')
-# print(out)
-
-# out2 = flowtools.flownormalshock2(gamma,2.5,'mach')
-# print(out2)

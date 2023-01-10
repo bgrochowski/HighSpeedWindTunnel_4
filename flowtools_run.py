@@ -34,13 +34,13 @@ for line in testfile1_lines:
         p__pt_measurement1_tab.append(float(line[1]))
         M_measurement1_tab.append(flowtools.flowisentropic2(gamma, float(line[1]), 'pres')[0])
 
-# for line in testfile1_lines:
-#     line = line.strip()
-#     if line[0]!="%":
-#         line = line.split()
-#         # xtab.append(float(line[0]))
-#         p__pt_measurement1_tab.append(float(line[1]))
-#         M_measurement1_tab.append(flowtools.flowisentropic2(gamma, float(line[1]), 'pres')[0])
+for line in testfile2_lines:
+    line = line.strip()
+    if line[0]!="%":
+        line = line.split()
+        # xtab.append(float(line[0]))
+        p__pt_measurement2_tab.append(float(line[1]))
+        M_measurement2_tab.append(flowtools.flowisentropic2(gamma, float(line[1]), 'pres')[0])
 
 for line in geom1file_lines:
     line = line.strip()
@@ -62,10 +62,16 @@ for i in range(len(xtab)):
     M_theoretical_tab.append(float(values[0]))
     p__pt_theoretical_tab.append(float(values[2]))
 
-plt.plot(xtab, M_measurement1_tab[:25], 'bo-', label="Measured, measurement 1AB")
-plt.plot(xtab, M_theoretical_tab, 'r-', label="Theoretical measurement 1AB")
-plt.plot(xtab, M_measurement2_tab, 'go-', label="Measured measurement 2A")
-plt.plot(xtab, M_local, 'y-', label="Theoretical measurement 2A")
+# plt.plot(xtab, M_measurement1_tab[:25], 'bo-', label="Measured, measurement 1AB")
+# plt.plot(xtab, M_theoretical_tab, 'r-', label="Theoretical measurement 1AB")
+# plt.plot(xtab, M_measurement2_tab[:25], 'go-', label="Measured measurement 2A")
+# plt.plot(xtab, M_local, 'y-', label="Theoretical measurement 2A")
+
+plt.plot(xtab, p__pt_measurement1_tab[:25], 'bo-', label="Measured, measurement 1AB")
+plt.plot(xtab, p__pt_theoretical_tab, 'r-', label="Theoretical measurement 1AB")
+plt.plot(xtab, p__pt_measurement2_tab[:25], 'go-', label="Measured measurement 2A")
+plt.plot(xtab, p_pt, 'y-', label="Theoretical measurement 2A")
+
 plt.xlim(40, 200)
 plt.legend()
 plt.show()
